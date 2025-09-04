@@ -15,13 +15,15 @@ public class UserModel implements Serializable {
 	private String phone;
 	private int roleid;
 	private Date createDate;
+	private String code;
+	private int status;
 	
 	public UserModel() {
 		super();
 	}
 
 	public UserModel(String username, String password, String email, String images, String fullname,
-			String phone, int roleid, Date createDate) {
+			String phone, int roleid, Date createDate, String code, int status) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -31,6 +33,8 @@ public class UserModel implements Serializable {
 		this.phone = phone;
 		this.roleid = roleid;
 		this.createDate = createDate;
+		this.code = code;
+		this.status = status;
 	}
 
 	public int getId() {
@@ -105,16 +109,27 @@ public class UserModel implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
 				+ ", images=" + images + ", fullname=" + fullname + ", phone=" + phone + ", roleid=" + roleid
-				+ ", createDate=" + createDate + "]";
-	}
-	
+				+ ", createDate=" + createDate + ", code=" + code + ", status=" + status + "]";
+	}	
 	
 }

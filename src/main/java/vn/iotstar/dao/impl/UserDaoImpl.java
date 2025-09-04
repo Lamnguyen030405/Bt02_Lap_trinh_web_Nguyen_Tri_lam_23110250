@@ -40,6 +40,8 @@ public class UserDaoImpl extends DBConnection implements IUserDao {
 				user.setPhone(rs.getString("phone"));
 				user.setRoleid(rs.getInt("roleid"));
 				user.setCreateDate(rs.getDate("createDate"));
+				user.setStatus(rs.getInt("status"));
+				user.setCode(rs.getString("code"));
 				list.add(user); //Add vào
 			}
 			return list;
@@ -73,6 +75,7 @@ public class UserDaoImpl extends DBConnection implements IUserDao {
 				user.setPhone(rs.getString("phone"));
 				user.setRoleid(rs.getInt("roleid"));
 				user.setCreateDate(rs.getDate("createDate"));
+				user.setStatus(rs.getInt("status"));
 	            return user;
 	        }
 		}catch(Exception ex) {
@@ -83,28 +86,34 @@ public class UserDaoImpl extends DBConnection implements IUserDao {
 	}
 
 	@Override
-	public void insert(UserModel user) {
-		
-		String sql = "Insert into users(username, password, email, images, fullname, phone, roleid, createDate) Values (?, ?, ?, ?, ?, ?, ?, ?)";
+	public UserModel findByEmail(String email) {
+		String sql = "Select * from users where users.email = ?";
 		
 		try {
 			conn = super.getConnection();
 			ps = conn.prepareStatement(sql);
-
-	        ps.setString(1, user.getUsername());
-	        ps.setString(2, user.getPassword());
-	        ps.setString(3, user.getEmail());
-	        ps.setString(4, user.getImages());
-	        ps.setString(5, user.getFullname());
-	        ps.setString(6, user.getPhone());
-	        ps.setInt(7, user.getRoleid());  
-	        ps.setDate(8, user.getCreateDate());
+			ps.setString(1, email);
+			rs = ps.executeQuery();
 			
-			ps.executeUpdate();
-			
+			while (rs.next()) {
+				UserModel user = new UserModel();
+				user.setId(rs.getInt("id")); 
+				user.setUsername(rs.getString("username")); 
+				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
+				user.setImages(rs.getString("images"));
+				user.setFullname(rs.getString("fullname"));
+				user.setPhone(rs.getString("phone"));
+				user.setRoleid(rs.getInt("roleid"));
+				user.setCreateDate(rs.getDate("createDate"));
+				user.setStatus(rs.getInt("status"));
+	            return user;
+	        }
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		return null;
 	}
 
 	@Override
@@ -129,6 +138,7 @@ public class UserDaoImpl extends DBConnection implements IUserDao {
 				user.setPhone(rs.getString("phone"));
 				user.setRoleid(rs.getInt("roleid"));
 				user.setCreateDate(rs.getDate("createDate"));
+				user.setStatus(rs.getInt("status"));
 	            return user;
 	        }
 		}catch(Exception ex) {
@@ -198,6 +208,53 @@ public class UserDaoImpl extends DBConnection implements IUserDao {
 		}
 		return false;
 	}
+
+	@Override
+	public void insert(UserModel user) {
+		
+		String sql = "Insert into users(username, password, email, images, fullname, phone, roleid, createDate, code, status) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			conn = super.getConnection();
+			ps = conn.prepareStatement(sql);
+
+	        ps.setString(1, user.getUsername());
+	        ps.setString(2, user.getPassword());
+	        ps.setString(3, user.getEmail());
+	        ps.setString(4, user.getImages());
+	        ps.setString(5, user.getFullname());
+	        ps.setString(6, user.getPhone());
+	        ps.setInt(7, user.getRoleid());  
+	        ps.setDate(8, user.getCreateDate());
+	        ps.setString(9, user.getCode());
+	        ps.setInt(10, user.getStatus());
+	        
+			ps.executeUpdate();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void update(UserModel user) {
+		
+		String sql = "UPDATE users SET password = ? WHERE email = ?";
+		
+		try {
+			conn = super.getConnection();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, user.getPassword());
+			ps.setString(2, user.getEmail());
+			
+			ps.executeUpdate();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+	}
 	
 	
 //	public static void main(String[] args) {
@@ -211,7 +268,9 @@ public class UserDaoImpl extends DBConnection implements IUserDao {
 //			    "abcw",                   // fullname
 //			    "02353",                  // phone
 //			    1,                        // roleid (int)
-//			    new java.sql.Date(System.currentTimeMillis()));                // createDate (java.util.Date)
+//			    new java.sql.Date(System.currentTimeMillis()),
+//			    "",
+//			    1);               // createDate (java.util.Date)
 //		
 //		userDao.insert(u);
 //		

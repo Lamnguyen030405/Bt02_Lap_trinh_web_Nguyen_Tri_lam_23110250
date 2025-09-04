@@ -14,11 +14,9 @@ public class DBConnection {
 	
 	public Connection getConnection() throws Exception {
 		String url =
-		"jdbc:sqlserver://" + serverName + "\\" + instance + ":" + portNumber +
-		";databaseName=" + dbName;
+		"jdbc:sqlserver://" + serverName + "\\" + instance + ":" + portNumber + ";databaseName=" + dbName;
 		if (instance == null || instance.trim().isEmpty())
-		url = "jdbc:sqlserver://"+serverName+":"+portNumber
-		+";databaseName="+dbName;
+		url = "jdbc:sqlserver://"+serverName+":"+portNumber+";databaseName="+dbName;
 		url += ";encrypt=true;trustServerCertificate=true"; 
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		return DriverManager.getConnection(url, userID, password);
@@ -30,6 +28,5 @@ public class DBConnection {
 		} catch (Exception e) {
 		e.printStackTrace();
 		}
-		}
-	
+	}
 }

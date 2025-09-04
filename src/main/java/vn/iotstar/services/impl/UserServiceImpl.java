@@ -15,6 +15,7 @@ public class UserServiceImpl implements IUserService {
 		UserModel user = this.findByUserName(username);
 		
 		if(user != null && password.equals(user.getPassword())) {
+			user.setStatus(1);
 			return user;
 		}
 		return null;
@@ -62,10 +63,20 @@ public class UserServiceImpl implements IUserService {
 		return userDao.checkExistPhone(phone);
 	}
 
-
 	@Override
 	public boolean isPasswordMatch(String password, String repeatPassword) {
 		return password != null && password.equals(repeatPassword);
 	}
 
+	@Override
+	public UserModel findByEmail(String email) {
+		return userDao.findByEmail(email);
+	}
+
+	@Override
+	public void update(UserModel user) {
+		userDao.update(user);
+	}
+
+	
 }
