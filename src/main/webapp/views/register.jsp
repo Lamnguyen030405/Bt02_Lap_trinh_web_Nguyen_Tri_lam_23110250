@@ -13,7 +13,7 @@
 <body>
 
 	
-	<form action="register" method="post">
+	<form action= "${pageContext.request.contextPath}/register" method="post">
 		<c:if test="${alert !=null}">
 			<h3 class="alert alert-danger">${alert}</h3>
 		</c:if>
@@ -48,7 +48,7 @@
   </div>
 
   <div class="container signin">
-    <p>Already have an account? <a href="/ltwebs5s6/login">Sign in</a>.</p>
+    <p>Already have an account? <a href="${pageContext.request.contextPath}/login">Sign in</a>.</p>
   </div>
 </form>
 </body>

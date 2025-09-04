@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin Home</title>
 </head>
 <body>
-	trang chủ của admin
+	<h2>Trang chủ của admin</h2>
+
+	<!-- Nút Logout -->
+	<form action="${pageContext.request.contextPath}/logout" method="get" style="display:inline;">
+		<button type="submit">Đăng xuất</button>
+	</form>
 </body>
 </html>

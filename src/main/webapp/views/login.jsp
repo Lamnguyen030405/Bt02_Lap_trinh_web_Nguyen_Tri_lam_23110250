@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/ltwebs5s6/login" method="post">
+	<form action="${pageContext.request.contextPath}/login" method="post">
 	<c:if test="${alert !=null}"> 
 		<h3 class="alert alert-danger">${alert}</h3>
 	</c:if>
@@ -31,12 +31,12 @@
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="/ltwebs5s6/forgot-password">password?</a></span>
+    <span class="psw">Forgot <a href="${pageContext.request.contextPath}/forgot-password">password?</a></span>
   </div>
   
   <div class="container" style="margin-top: 20px; text-align: center;">
     <p>Don't have an account?
-      <a href="/ltwebs5s6/register">Create one</a>
+      <a href="${pageContext.request.contextPath}/register">Create one</a>
     </p>
   </div>
   

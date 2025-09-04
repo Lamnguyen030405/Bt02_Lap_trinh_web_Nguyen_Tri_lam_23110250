@@ -7,7 +7,7 @@
 <head><title>Verify Code</title></head>
 <body>
     <h2>Enter Verification Code</h2>
-    <form action="verify-code" method="post">
+    <form action="${pageContext.request.contextPath}/verify-code" method="post">
         <input type="text" name="code" placeholder="Enter code" required />
         <button type="submit">Verify</button>
     </form>

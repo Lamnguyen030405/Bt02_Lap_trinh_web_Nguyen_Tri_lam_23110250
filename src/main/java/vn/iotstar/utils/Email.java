@@ -29,7 +29,7 @@ public class Email {
 
 		String toEmail = user.getEmail();
 		String fromEmail = "nguyentrilam0304@gmail.com"; // bạn cần bật "app password" nếu dùng Gmail
-		String password = "yxwx tsow dzwt pooy"; // KHÔNG dùng mật khẩu Gmail thường (xem lưu ý bên dưới)
+		String password = "uiyg qnfw kxdn fvzt"; // KHÔNG dùng mật khẩu Gmail thường (xem lưu ý bên dưới)
 
 		try {
 			// Thiết lập cấu hình SMTP cho Gmail

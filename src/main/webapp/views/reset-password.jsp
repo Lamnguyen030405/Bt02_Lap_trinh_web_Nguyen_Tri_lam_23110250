@@ -7,7 +7,7 @@
 <head><title>Reset Password</title></head>
 <body>
     <h2>Reset Your Password</h2>
-    <form action="reset-password" method="post">
+    <form action="${pageContext.request.contextPath}/reset-password" method="post">
         <input type="password" name="newPassword" placeholder="New Password" required />
         <button type="submit">Reset</button>
     </form>

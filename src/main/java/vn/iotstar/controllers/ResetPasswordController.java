@@ -33,10 +33,10 @@ public class ResetPasswordController extends HttpServlet{
 			user.setPassword(newPassword); // nên mã hóa trước khi lưu
 			service.update(user);
 			req.setAttribute("success", "Đặt lại mật khẩu thành công.");
-			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+			resp.sendRedirect(req.getContextPath() + "/login");
 		} else {
 			req.setAttribute("error", "Không thể đặt lại mật khẩu.");
-			req.getRequestDispatcher("/views/reset-password.jsp").forward(req, resp);
+			req.getRequestDispatcher("views/reset-password.jsp").forward(req, resp);
 		}
 	}
 }
