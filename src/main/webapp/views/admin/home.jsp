@@ -13,5 +13,10 @@
 	<form action="${pageContext.request.contextPath}/logout" method="get" style="display:inline;">
 		<button type="submit">Đăng xuất</button>
 	</form>
+	
+	<!-- Nút Xem list category -->
+	<form action="${pageContext.request.contextPath}/admin/category/list" method="get" style="display:inline;">
+		<button type="submit">Xem list</button>
+	</form>
 </body>
 </html>

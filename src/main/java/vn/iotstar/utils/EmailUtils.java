@@ -14,7 +14,7 @@ import jakarta.mail.internet.MimeMessage;
 
 import vn.iotstar.models.UserModel;
 
-public class Email {
+public class EmailUtils {
 	
 	// Tạo mã code ngẫu nhiên 6 chữ số
 	public String getRandom() {

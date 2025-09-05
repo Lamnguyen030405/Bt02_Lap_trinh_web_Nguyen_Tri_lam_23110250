@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import vn.iotstar.models.UserModel;
 import vn.iotstar.services.IUserService;
 import vn.iotstar.services.impl.UserServiceImpl;
-import vn.iotstar.utils.Email;
+import vn.iotstar.utils.EmailUtils;
 
 @WebServlet(urlPatterns = {"/forgot-password"})
 public class ForgotPasswordController extends HttpServlet{
@@ -38,7 +38,7 @@ public class ForgotPasswordController extends HttpServlet{
 		}
 
 		// Tạo mã xác thực và gửi email
-		Email emailUtil = new Email();
+		EmailUtils emailUtil = new EmailUtils();
 		String code = emailUtil.getRandom();
 		user.setCode(code); // lưu tạm thời
 
